@@ -23,8 +23,8 @@ public class LoginSteps {
     public LoginSteps(BaseSteps baseSteps) {
         this.driver = baseSteps.driver;
         this.wait = baseSteps.wait;
-        this.basePage = baseSteps.basePage; // learn more
-        this.loginPage = basePage.goToLogin(); // learn more about that
+        this.basePage = baseSteps.basePage;
+        this.loginPage = basePage.goToLogin();
     }
 
     @When("Login using {} email and {} password")

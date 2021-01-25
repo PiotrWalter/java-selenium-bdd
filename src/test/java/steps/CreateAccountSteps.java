@@ -21,7 +21,7 @@ public class CreateAccountSteps {
         this.driver = baseSteps.driver;
         this.wait = baseSteps.wait;
         this.loginPage = baseSteps.loginPage;
-        //this.createAccountPage = baseSteps.createAccountPage; //do wywalenia
+        //this.createAccountPage = baseSteps.createAccountPage; //obecnie niepotrzebne
     }
 
     @When("Create account using {} email")

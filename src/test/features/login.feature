@@ -1,14 +1,9 @@
 Feature: Login features
+
   Scenario: Should login user using valid login and password
     Given Open login page
-    When Login using piotrwaltrowski@gmail.com email and XJvF2@s3GeLx9L@ password
+    When Login using waltertest@gmail.com email and 123^%$QAZwer password
     Then User is logged in
-
-  Scenario: Should show message when try to login when logged in
-    Given Open login page
-    When Login using piotrwaltrowski@gmail.com email and XJvF2@s3GeLx9L@ password
-    Then User is logged in
-
 
     Scenario Outline: Should show message when try to login using invalid credentials
       Given Open homepage
@@ -16,7 +11,14 @@ Feature: Login features
       Then User in not logged in
       And Alert <expected alert> is visible
       Examples:
-        |email                      |password|expected alert|
-        |piotrwaltrowski@gmail.com  |        |Password is required.     |
-        |                           |123qwe  |An email address required.|
+        |email                      |password     |expected alert|
+        |waltertest@gmail.com       |             |Password is required.     |
+        |                           |123^%$QAZwer |An email address required.|
+        |waltertest@gmail.com       |wrong        |Invalid password.         |
+        |wrong                      |aaaa         |Invalid email address.    |
 
+    Scenario: Should log out when user is logged in and click log out button
+      Given Open login page
+      And Login using waltertest@gmail.com email and 123^%$QAZwer password
+      When Logout button is clicked
+      Then User in not logged in

@@ -55,6 +55,10 @@ public class BasePage {
     public void searchItemUsingSearchBox(String item) {
         wait.until(ExpectedConditions.visibilityOf(searchInputField));
         searchInputField.sendKeys(item);
-        // zrobić return strony ProductsListPage??
+        // zrobić return strony ProductsListPage
+    }
+
+    public void clickOnSignOutButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(signOutButton)).click();
     }
 }

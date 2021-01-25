@@ -55,8 +55,8 @@ public class BaseSteps {
         loginPage = basePage.goToLogin();
     }
 
-//    @When("Logout button is clicked")
-//    public void logoutButtonIsClicked() {
-//        basePage.clickOnSignOutButton();
-//    }
+    @When("Logout button is clicked")
+    public void clickLogOutButton() {
+        basePage.clickOnSignOutButton();
+    }
 }
