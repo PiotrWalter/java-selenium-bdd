@@ -1,12 +1,11 @@
 package pageobjects;
 
-import org.openqa.selenium.Keys;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobject.BasePage;
 
 public class LoginPage  extends BasePage {
 //    private WebDriver driver;
@@ -24,8 +23,11 @@ public class LoginPage  extends BasePage {
     @FindBy(id = "SubmitCreate")
     private WebElement submitCreate;
 
-    @FindBy(className = "alert-danger")
-    private WebElement authAlert;
+    @FindBy(linkText = "Authentication failed.")
+    private WebElement alertDangerLink;
+
+    @FindBy(className = "alert-danger") //zmienić ten locator
+    private WebElement alertDanger;
 
     @FindBy(linkText = "Forgot your password?")
     private WebElement forgotPasswordLink;
@@ -43,5 +45,22 @@ public class LoginPage  extends BasePage {
         passwordField.sendKeys(password);
         submitLoginButton.click();
     }
+
+    public CreateAccountPage startCreatingAccount(String email) {
+        email_create.sendKeys(email);
+        submitCreate.click();
+        return new CreateAccountPage(driver, wait);
+    }
+
+    public boolean isAlertDangerDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(alertDangerLink));
+        return alertDangerLink.isDisplayed();
+    }
+
+    public String getAlertText() {
+        wait.until(ExpectedConditions.visibilityOf(alertDanger));
+        return  alertDanger.getText();
+    }
+
 
 }

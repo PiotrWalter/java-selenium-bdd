@@ -1,6 +1,5 @@
-package pageobject;
+package pageobjects;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,9 +35,26 @@ public class BasePage {
         driver.get(MAIN_URL);
     }
 
-    public pageobjects.LoginPage goToLogin() {
+    public LoginPage goToLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(signInButton));
         signInButton.click();
-        return new pageobjects.LoginPage(driver, wait);
+        return new LoginPage(driver, wait);
+    }
+
+    public boolean isSignInButtonDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(signInButton));
+        return signInButton.isDisplayed();
+    }
+
+    public boolean isSignOutButtonDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(signOutButton));
+        return signOutButton.isDisplayed();
+    }
+
+    //HEADER METHODS
+    public void searchItemUsingSearchBox(String item) {
+        wait.until(ExpectedConditions.visibilityOf(searchInputField));
+        searchInputField.sendKeys(item);
+        // zrobić return strony ProductsListPage??
     }
 }
