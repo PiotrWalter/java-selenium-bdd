@@ -1,5 +1,6 @@
 package pageobjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,10 +53,11 @@ public class BasePage {
     }
 
     //HEADER METHODS
-    public void searchItemUsingSearchBox(String item) {
+    public ProductsListPage searchItemUsingSearchBox(String item) {
         wait.until(ExpectedConditions.visibilityOf(searchInputField));
         searchInputField.sendKeys(item);
-        // zrobić return strony ProductsListPage
+        searchInputField.sendKeys(Keys.ENTER);
+        return new ProductsListPage(driver, wait);
     }
 
     public void clickOnSignOutButton() {

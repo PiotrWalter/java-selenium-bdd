@@ -1,0 +1,39 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="login.feature" type="substepsFeature" factoryName="Substeps Feature" show_console_on_std_err="false" show_console_on_std_out="false">
+    <module name="" />
+    <option name="allowRunningInParallel" value="false" />
+    <option name="model">
+      <SubstepsRunnerConfigurationModel>
+        <option name="classPathString" />
+        <option name="homePath" />
+        <option name="modulePath" value="$PROJECT_DIR$/java-selenium-bdd.iml" />
+        <option name="myListener" />
+        <option name="nonStrictKeywordPrecedence" />
+        <option name="pathToFeature" value="$PROJECT_DIR$/src/test/features/login.feature" />
+        <option name="scenarioName" />
+        <option name="stepImplentationClassNames" />
+        <option name="strict" value="false" />
+        <option name="subStepDefinitionDirectory" />
+        <option name="tags" />
+        <option name="versionString" />
+        <option name="workingDir" value="$PROJECT_DIR$" />
+      </SubstepsRunnerConfigurationModel>
+    </option>
+    <option name="classPathString" />
+    <option name="homePath" />
+    <option name="modulePath" value="$PROJECT_DIR$/java-selenium-bdd.iml" />
+    <option name="myListener" />
+    <option name="nonStrictKeywordPrecedence" />
+    <option name="pathToFeature" value="$PROJECT_DIR$/src/test/features/login.feature" />
+    <option name="scenarioName" />
+    <option name="stepImplentationClassNames" />
+    <option name="strict" value="false" />
+    <option name="subStepDefinitionDirectory" />
+    <option name="tags" />
+    <option name="versionString" />
+    <option name="workingDir" value="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
