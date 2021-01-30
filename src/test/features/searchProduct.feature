@@ -16,3 +16,9 @@ Feature: Search products using search box
     When Search dress using search box
     Then System show 7 results
 
+
+  Scenario: Products on list should have name according to searched phrase
+    Given Open homepage
+    When Search T-shirt using search box
+    Then System show products containing searched phrase T-shirt
+

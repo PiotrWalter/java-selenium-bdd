@@ -10,6 +10,8 @@ import pageobjects.BasePage;
 import pageobjects.ProductsListPage;
 import pageobjects.LoginPage;
 
+import java.util.List;
+
 public class SearchSteps {
 
     private WebDriver driver;
@@ -38,4 +40,10 @@ public class SearchSteps {
     public void confirmNumberOfResultsOnPage(String expectedNumberOfResults) {
         Assertions.assertTrue(productsListPage.getNumberOfProductsOnPage().contains(expectedNumberOfResults));
     }
+
+    @Then("System show products containing searched phrase {}")
+        public void checkIsSearchedPhraseInProducts(String expectedProduct) {
+        Assertions.assertTrue(productsListPage.checkIsSearchedPhraseInProducts(expectedProduct));
+    }
+
 }

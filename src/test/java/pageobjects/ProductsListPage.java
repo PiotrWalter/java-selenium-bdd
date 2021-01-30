@@ -20,6 +20,9 @@ public class ProductsListPage extends BasePage{
     @FindBy(css = ".product_list .product-container")
     List<WebElement> productContainers;
 
+    @FindBy(css = ".product_list .product-container .product-name")
+    List<WebElement> productNames;
+
     @FindBy(className = "product-name")
     WebElement productName;
 
@@ -40,4 +43,16 @@ public class ProductsListPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(resultsCounter));
         return resultsCounter.getText();
     }
+
+    //checking is searched phrase in all searched results
+    public boolean checkIsSearchedPhraseInProducts(String searchedPhrase) {
+        for (WebElement productName : productNames){
+            if (productName.getText().contains(searchedPhrase)){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
 }
