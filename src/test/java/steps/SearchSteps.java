@@ -28,10 +28,14 @@ public class SearchSteps {
         productsListPage = basePage.searchItemUsingSearchBox(item);
     }
 
-    @Then("System show products on list and accordingly {}")
-    public void confirmNumberOfResultsOnPage(String expectedNumberOfResults) {
-        Assertions.assertTrue(productsListPage.getNumberOfProductsOnPage().contains(expectedNumberOfResults));
+    @Then("System show {} results")
+    public void confirmNumberOfResultsOnPage (int expectedNumberOfResult) {
+        Assertions.assertTrue(productsListPage.checkIsNumberOfProductCorrect(expectedNumberOfResult));
     }
 
 
+    @Then("System show correct item count {}")
+    public void confirmNumberOfResultsOnPage(String expectedNumberOfResults) {
+        Assertions.assertTrue(productsListPage.getNumberOfProductsOnPage().contains(expectedNumberOfResults));
+    }
 }

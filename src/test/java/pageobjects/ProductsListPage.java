@@ -1,12 +1,12 @@
 package pageobjects;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class ProductsListPage extends BasePage{
 
@@ -17,9 +17,27 @@ public class ProductsListPage extends BasePage{
     @FindBy(className = "heading-counter")
     WebElement resultsCounter;
 
+    @FindBy(css = ".product_list .product-container")
+    List<WebElement> productContainers;
+
+    @FindBy(className = "product-name")
+    WebElement productName;
+
+    //counting products on page by counting page containers
+    public int getNumberOfProductContainersVisibleOnPageResults() {
+        wait.until(ExpectedConditions.visibilityOf(resultsCounter));
+        return productContainers.size();
+    }
+
+    //checking is expected product number equals product containers on page
+    public boolean checkIsNumberOfProductCorrect(int expectedNumberOfResult) {
+        int numberOfProducts = getNumberOfProductContainersVisibleOnPageResults();
+        return numberOfProducts == expectedNumberOfResult;
+    }
+
+    //returning product count from text box that counts products on page
     public String getNumberOfProductsOnPage() {
         wait.until(ExpectedConditions.visibilityOf(resultsCounter));
         return resultsCounter.getText();
     }
-
 }
