@@ -9,7 +9,7 @@ Feature: Search products using search box
       |t-shirt|1 result has been found.  |
       |blouse |1 result has been found.  |
       |ball   |0 results have been found.|
-      |ball   |1 result has been found.  |
+
 
   Scenario: Should find products according to searched phrase
     Given Open homepage

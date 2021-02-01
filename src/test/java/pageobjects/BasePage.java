@@ -52,15 +52,17 @@ public class BasePage {
         return signOutButton.isDisplayed();
     }
 
+    public void clickOnSignOutButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(signOutButton)).click();
+    }
+
     //HEADER METHODS
+
+    //Search item
     public ProductsListPage searchItemUsingSearchBox(String item) {
         wait.until(ExpectedConditions.visibilityOf(searchInputField));
         searchInputField.sendKeys(item);
         searchInputField.sendKeys(Keys.ENTER);
         return new ProductsListPage(driver, wait);
-    }
-
-    public void clickOnSignOutButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(signOutButton)).click();
     }
 }

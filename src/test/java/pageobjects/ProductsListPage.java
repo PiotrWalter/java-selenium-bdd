@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Random;
 
 public class ProductsListPage extends BasePage{
 
@@ -25,6 +26,8 @@ public class ProductsListPage extends BasePage{
 
     @FindBy(className = "product-name")
     WebElement productName;
+
+    private String myProduct; //chosen product name from choseRandomItemFromProductList
 
     //counting products on page by counting page containers
     public int getNumberOfProductContainersVisibleOnPageResults() {
@@ -55,4 +58,20 @@ public class ProductsListPage extends BasePage{
         return false;
     }
 
+    //chose random product from list
+    public ProductDetailsPage choseRandomItemFromProductList() {
+        List<WebElement> allProducts = productNames;
+        var random = new Random();
+        var randomProduct = random.nextInt(getNumberOfProductContainersVisibleOnPageResults());
+        //var myProduct = allProducts.get(randomProduct).getText(); // product name from product list
+        myProduct = allProducts.get(randomProduct).getText();
+        System.out.println(myProduct); //debug
+        allProducts.get(randomProduct).click();
+        return new ProductDetailsPage(driver, wait);
+    }
+
+    //get chosen product from list
+    public String getMyProduct() {
+        return myProduct;
+    }
 }

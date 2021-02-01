@@ -32,10 +32,10 @@ public class BaseSteps {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @After
-    public void tearDown() throws IOException {
-        driver.quit();
-    }
+//    @After
+//    public void tearDown() throws IOException {
+//        driver.quit();
+//    }
 
     @Given("Open homepage")
     public void open_homepage() {
