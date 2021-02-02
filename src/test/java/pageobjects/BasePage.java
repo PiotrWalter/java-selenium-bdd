@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     final String MAIN_URL = "http://automationpractice.com/index.php";
+    final String LOGIN_PAGE_URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -34,6 +35,11 @@ public class BasePage {
 
     public void open() {
         driver.get(MAIN_URL);
+    }
+
+    public LoginPage openOnLoginLage() {
+        driver.get(LOGIN_PAGE_URL);
+        return new LoginPage(driver, wait);
     }
 
     public LoginPage goToLogin() {

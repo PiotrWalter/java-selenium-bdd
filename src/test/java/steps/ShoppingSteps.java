@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.BasePage;
 import pageobjects.ProductsListPage;
 import pageobjects.ProductDetailsPage;
+import pageobjects.CheckOutPage;
 
 public class ShoppingSteps {
 
@@ -16,6 +18,7 @@ public class ShoppingSteps {
     private BasePage basePage;
     private ProductsListPage productsListPage;
     private ProductDetailsPage productDetailsPage;
+    private CheckOutPage checkOutPage;
 
     public ShoppingSteps(BaseSteps baseSteps) {
         this.driver = baseSteps.driver;
@@ -72,6 +75,41 @@ public class ShoppingSteps {
     @Then("Product is added to cart")
     public void checkIsProductAddedToCart() {
         Assertions.assertTrue(productDetailsPage.checkIsProductAddedToCart());
+    }
+
+    @When("Proceed to checkout")
+    public void proceedToCheckout() {
+        checkOutPage = productDetailsPage.proceedToCheckout();
+    }
+
+    @When("Delete item from cart")
+    public void deleteItemFromCart () {
+        productDetailsPage.deleteItemFromShoppingCart();
+    }
+
+    @Then("Product is removed from cart and empty cart alert is visible")
+    public void checkIsProductRemovedFromCart() {
+        Assertions.assertTrue(productDetailsPage.isCartIsEmptyAlertVisible());
+    }
+
+    //buy chosen product and full checkout
+    @When("I buy random {} and pay by {}")
+    public void searchItemAddRandomItemCheckOutAndByUsingChosePaymentMethod(String item, String chosenOption) {
+        productsListPage = basePage.searchItemUsingSearchBox(item);
+        productDetailsPage = productsListPage.choseRandomItemFromProductList();
+        productDetailsPage.addToCart();
+        checkOutPage = productDetailsPage.proceedToCheckout();
+        checkOutPage.proceedThroughCheckOutFromCartSummary(chosenOption);
+    }
+
+    @When("Check out using pay by {}")
+    public void proceedThroughWholeCheckout(String chosenOption) {
+        checkOutPage.proceedThroughCheckOutFromCartSummary(chosenOption);
+    }
+
+    @Then("Order is complete and system show {} message")
+    public void checkIsOrderComplete(String expectedMessage) {
+        Assertions.assertEquals(expectedMessage, checkOutPage.returnOrderStatus());
     }
 
 }

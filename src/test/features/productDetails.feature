@@ -12,3 +12,15 @@ Feature: Product details features
     And Click on add to cart button
     Then Product is added to cart
 
+  Scenario: Should remove only item from cart and show alert that cart is empty
+    Given Open homepage
+    When Search T-shirt using search box
+    And Click on product
+    And Click on add to cart button
+    And Proceed to checkout
+    And Delete item from cart
+    Then Product is removed from cart and empty cart alert is visible
+
+
+
+

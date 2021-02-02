@@ -22,6 +22,15 @@ public class ProductDetailsPage extends BasePage{
     @FindBy(className = "icon-ok")
     WebElement addToCartConfirmationIcon;
 
+    @FindBy(linkText = "Proceed to checkout")
+    WebElement proceedToCheckoutButton;
+
+    @FindBy(className = "icon-trash")
+    WebElement trashButton;
+
+    @FindBy(className = "alert")
+    WebElement shoppingCartEmptyAlert;
+
 
     public String getProductNameFromProductDetails() {
         wait.until(ExpectedConditions.visibilityOf(productNameDetails));
@@ -40,5 +49,20 @@ public class ProductDetailsPage extends BasePage{
         return true;
     }
 
+    public CheckOutPage proceedToCheckout() {
+        wait.until(ExpectedConditions.elementToBeClickable(proceedToCheckoutButton));
+        proceedToCheckoutButton.click();
+        return new CheckOutPage(driver, wait);
+    }
+
+    public void deleteItemFromShoppingCart() {
+        wait.until(ExpectedConditions.elementToBeClickable(trashButton));
+        trashButton.click();
+    }
+
+    public boolean isCartIsEmptyAlertVisible() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartEmptyAlert));
+        return true;
+    }
 
 }

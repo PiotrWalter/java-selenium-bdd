@@ -43,6 +43,13 @@ public class BaseSteps {
         basePage.open();
     }
 
+    @Given("Open as logged user using {} email and {} password")
+    public void openAsLoggedUser(String email, String password) {
+        basePage = new BasePage(driver, wait);
+        loginPage = basePage.openOnLoginLage();
+        loginPage.login(email, password);
+    }
+
     @And("Go to login page")
     public void goToLoginPage() {
         loginPage = basePage.goToLogin();
