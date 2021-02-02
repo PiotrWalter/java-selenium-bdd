@@ -94,7 +94,7 @@ public class ShoppingSteps {
 
     //buy chosen product and full checkout
     @When("I buy random {} and pay by {}")
-    public void searchItemAddRandomItemCheckOutAndByUsingChosePaymentMethod(String item, String chosenOption) {
+    public void searchItemAddRandomItemCheckOutAndBuyUsingChosePaymentMethod(String item, String chosenOption) {
         productsListPage = basePage.searchItemUsingSearchBox(item);
         productDetailsPage = productsListPage.choseRandomItemFromProductList();
         productDetailsPage.addToCart();
